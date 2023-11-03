@@ -1,0 +1,22 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "dev": "nodemon main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "bc2023-4"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fast-xml-parser": "^4.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
