@@ -1,36 +1,33 @@
-const http = require('http'); // Підключаємо модуль 'http' для створення HTTP-сервера
-const fs = require('fs'); // Підключаємо модуль 'fs' для роботи з файловою системою
-const fastXmlParser = require('fast-xml-parser'); // Підключаємо модуль 'fast-xml-parser' для роботи з XML
+const http = require('http'); 
+const fs = require('fs'); 
+const fastXmlParser=require('fast-xml-parser')
 
-// Функція для розбору XML-даних
+
+
 function XMLParser(xmlString) {
-  // Налаштовуємо параметри для парсера XML
+  
   const options = {
-    attributeNamePrefix: '@', // Префікс для атрибутів
-    ignoreAttributes: false, // Враховувати атрибути як елементи
-    format: true, // Використовувати форматування
+    attributeNamePrefix: '@', 
+    ignoreAttributes: false, 
+    format: true, 
   };
 
-  // Використовуємо бібліотеку 'fast-xml-parser' для парсингу рядка XML
   return fastXmlParser.parse(xmlString, options);
 }
 
-// Функція для побудови XML-документу
+
 function XMLBuilder(data) {
-  // Налаштовуємо параметри для генератора XML
+  
   const builderOptions = {
-    attributeNamePrefix: '@', // Префікс для атрибутів
-    format: true, // Використовувати форматування
+    attributeNamePrefix: '@', 
+    format: true, 
   };
 
-  // Створюємо об'єкт генератора XML
   const xmlBuilder = new fastXmlParser.j2xParser(builderOptions);
-
-  // Генеруємо XML-документ з вхідних даних
   return xmlBuilder.parse(data);
 }
 
-// Створюємо HTTP-сервер
+
 const server = http.createServer((req, res) => {
   // Перевіряємо, чи це GET-запит і чи URL - '/'
   if (req.method === 'GET' && req.url === '/') {
